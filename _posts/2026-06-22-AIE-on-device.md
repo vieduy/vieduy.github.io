@@ -3,7 +3,6 @@ title: Kỹ Năng Cần Có Để Trở Thành AI Engineer On-Device Xuất Sắ
 date: 2026-06-22 10:00:00 +0700
 categories: [AI, SLM]
 ---
-# Kỹ Năng Cần Có Để Trở Thành AI Engineer On-Device Xuất Sắc
 
 > Sau 3 tháng nghiên cứu thực chiến về on-device AI, tôi nhận ra rằng đây không phải là ngành chỉ cần biết code model — mà là giao điểm của ML, systems engineering, và hardware awareness. Bài viết này tổng hợp những kỹ năng thực sự cần thiết để làm tốt công việc này.
 
