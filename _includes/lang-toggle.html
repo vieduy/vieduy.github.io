@@ -1,0 +1,75 @@
+{% comment %}
+  Bilingual (EN/VI) in-page toggle.
+  Usage in a post:
+
+    {% include lang-toggle.html %}
+
+    <div class="lang-content" data-lang="en" markdown="1">
+    ## English heading
+    English content in **markdown**...
+    </div>
+
+    <div class="lang-content" data-lang="vi" markdown="1">
+    ## Tiêu đề tiếng Việt
+    Nội dung tiếng Việt bằng **markdown**...
+    </div>
+
+  Tip: set `toc: false` in the post front matter so the table of
+  contents doesn't list both languages' headings.
+{% endcomment %}
+
+<div class="lang-switch" role="group" aria-label="Language">
+  <button type="button" class="lang-btn" data-lang="en">🇬🇧 English</button>
+  <button type="button" class="lang-btn" data-lang="vi">🇻🇳 Tiếng Việt</button>
+</div>
+
+<style>
+  .lang-switch { display: flex; gap: .5rem; margin: 1rem 0 1.5rem; }
+  .lang-btn {
+    cursor: pointer;
+    border: 1px solid var(--btn-border-color, #d0d7de);
+    background: var(--card-bg, transparent);
+    color: inherit;
+    padding: .35rem .9rem;
+    border-radius: .5rem;
+    font-size: .9rem;
+    line-height: 1.2;
+  }
+  .lang-btn.active { background: #1f6feb; color: #fff; border-color: #1f6feb; }
+  .lang-content[data-lang] { display: none; }
+  .lang-content.active { display: block; }
+</style>
+
+<script>
+  (function () {
+    function setLang(lang) {
+      document.querySelectorAll('.lang-btn').forEach(function (b) {
+        b.classList.toggle('active', b.dataset.lang === lang);
+      });
+      document.querySelectorAll('.lang-content').forEach(function (c) {
+        c.classList.toggle('active', c.dataset.lang === lang);
+      });
+      try { localStorage.setItem('preferred-lang', lang); } catch (e) {}
+    }
+
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest('.lang-btn');
+      if (btn) setLang(btn.dataset.lang);
+    });
+
+    function init() {
+      var saved = null;
+      try { saved = localStorage.getItem('preferred-lang'); } catch (e) {}
+      var def = saved ||
+        ((navigator.language || '').toLowerCase().indexOf('vi') === 0 ? 'vi' : 'en');
+      if (!document.querySelector('.lang-content[data-lang="' + def + '"]')) def = 'en';
+      setLang(def);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>

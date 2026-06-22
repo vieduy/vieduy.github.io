@@ -2,7 +2,21 @@
 title: Tương Lai Của AI On-Device: 7 Xu Hướng Sẽ Định Hình Ngành Trong 5 Năm Tới
 date: 2026-06-22 10:00:00 +0700
 categories: [AI, SLM]
+toc: false
 ---
+
+{% include lang-toggle.html %}
+
+<div class="lang-content" data-lang="en" markdown="1">
+
+## The Future of On-Device AI: 7 Trends That Will Shape the Field Over the Next 5 Years
+
+> _English translation coming soon. Replace this block with the translated article — keep it inside this `<div ... markdown="1">` so Markdown still renders._
+
+</div>
+
+<div class="lang-content" data-lang="vi" markdown="1">
+
 > Năm 2025 đánh dấu một threshold quan trọng: lần đầu tiên, on-device AI inference đạt sub-20ms latency trên điện thoại tầm trung cho production computer vision models. Không phải trên server, không phải trên flagship đắt tiền — trên hardware mà phần lớn người dùng đang cầm trên tay. Đây không còn là công nghệ tương lai. Nó đang xảy ra. Và từ điểm này trở đi, tốc độ thay đổi sẽ nhanh hơn nhiều so với 5 năm trước.
 
 ---
@@ -166,3 +180,5 @@ On-device AI không cạnh tranh với cloud AI — chúng giải quyết nhữn
 ---
 
 *Số liệu trong bài được tổng hợp từ nghiên cứu thực tế (tháng 6/2026): Qualcomm, MediaTek, Microsoft BitNet, IEEE Transactions on Mobile Computing (EdgeLLM), IDC, Gartner, và các báo cáo phân tích thị trường của Grand View Research và Coherent Market Insights.*
+
+</div>
