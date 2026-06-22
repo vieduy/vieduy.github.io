@@ -1,4 +1,3 @@
-```markdown
 ---
 title: Kỹ Năng Cần Có Để Trở Thành AI Engineer On-Device Xuất Sắc
 date: 2026-06-22 10:00:00 +0700
