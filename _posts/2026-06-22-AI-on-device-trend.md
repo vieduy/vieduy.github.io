@@ -1,5 +1,5 @@
 ---
-title: Tương Lai Của AI On-Device: 7 Xu Hướng Sẽ Định Hình Ngành Trong 5 Năm Tới
+title: "Tương Lai Của AI On-Device: 7 Xu Hướng Sẽ Định Hình Ngành Trong 5 Năm Tới"
 date: 2026-06-22 10:00:00 +0700
 categories: [AI, SLM]
 toc: false
