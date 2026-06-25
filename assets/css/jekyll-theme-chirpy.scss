@@ -12,4 +12,251 @@
 {%- endif -%}
 ';
 
-/* append your custom style below */
+/* ==========================================================================
+   Custom theme — "Refined minimal" with an indigo accent.
+   Layered on top of Chirpy via CSS custom-property overrides + light polish.
+   ========================================================================== */
+
+/* --- Accent palette ---------------------------------------------------------
+   Light contexts: indigo-600 (#4f46e5) primary, indigo-700 hover.
+   Dark contexts:  indigo-400 (#818cf8) for legibility on dark backgrounds.    */
+
+@mixin accent-light {
+  --accent: #4f46e5;
+  --accent-strong: #4338ca;
+  --accent-soft: rgb(79 70 229 / 8%);
+  --link-color: #4f46e5;
+  --link-underline-color: rgb(79 70 229 / 25%);
+  --sidebar-active-color: #4f46e5;
+  --sidebar-hover-bg: rgb(79 70 229 / 7%);
+  --btn-share-hover-color: #4f46e5;
+  --checkbox-checked-color: #4f46e5;
+  --tag-hover: rgb(79 70 229 / 12%);
+}
+
+@mixin accent-dark {
+  --accent: #818cf8;
+  --accent-strong: #a5b4fc;
+  --accent-soft: rgb(129 140 248 / 12%);
+  --link-color: #a5b4fc;
+  --link-underline-color: rgb(129 140 248 / 35%);
+  --sidebar-active-color: #a5b4fc;
+  --sidebar-hover-bg: rgb(129 140 248 / 10%);
+  --btn-share-hover-color: #a5b4fc;
+  --tag-hover: rgb(129 140 248 / 16%);
+}
+
+:root[data-mode='light'] {
+  @include accent-light;
+}
+
+:root[data-mode='dark'] {
+  @include accent-dark;
+}
+
+:root:not([data-mode]) {
+  @include accent-light;
+
+  @media (prefers-color-scheme: dark) {
+    @include accent-dark;
+  }
+}
+
+/* --- Typography refinements ------------------------------------------------ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizelegibility;
+  letter-spacing: 0.005em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  letter-spacing: -0.018em;
+}
+
+#core-wrapper {
+  p,
+  li {
+    line-height: 1.75;
+  }
+}
+
+::selection {
+  background: var(--accent-soft);
+}
+
+/* --- Links: subtle accent underline that animates on hover ----------------- */
+
+#core-wrapper a:not(.img-link):not(.btn):not(.tag):not(.post-tag):not(
+    .category
+  ) {
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1.5px;
+  transition: background-size 0.25s ease;
+
+  &:hover {
+    background-size: 100% 1.5px;
+    color: var(--accent-strong);
+  }
+}
+
+/* --- Sidebar polish -------------------------------------------------------- */
+
+#sidebar {
+  border-right: 1px solid var(--sidebar-border-color);
+
+  .site-title a {
+    letter-spacing: -0.01em;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--accent);
+    }
+  }
+
+  #avatar {
+    box-shadow: var(--accent-soft) 0 0 0 6px;
+    transition: box-shadow 0.3s ease;
+
+    &:hover {
+      box-shadow: var(--accent-soft) 0 0 0 9px;
+    }
+  }
+
+  .nav-item {
+    position: relative;
+    border-radius: 0.55rem;
+    transition:
+      background-color 0.2s ease,
+      transform 0.2s ease;
+
+    &:hover {
+      transform: translateX(2px);
+    }
+
+    &.active {
+      .nav-link {
+        font-weight: 700;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 3px;
+        height: 1.1rem;
+        border-radius: 0 3px 3px 0;
+        background: var(--accent);
+        transform: translateY(-50%);
+      }
+    }
+  }
+}
+
+/* --- Post-list cards: quiet borders that lift on hover --------------------- */
+
+#post-list {
+  .card {
+    border: 1px solid var(--main-border-color) !important;
+    border-radius: 12px;
+    background: var(--card-bg) !important;
+    transition:
+      transform 0.22s ease,
+      box-shadow 0.22s ease,
+      border-color 0.22s ease;
+
+    &:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent) !important;
+      box-shadow:
+        0 1px 2px rgb(15 23 42 / 4%),
+        0 12px 28px -12px rgb(79 70 229 / 22%);
+    }
+
+    .card-title {
+      letter-spacing: -0.012em;
+      transition: color 0.2s ease;
+    }
+
+    &:hover .card-title {
+      color: var(--accent) !important;
+    }
+  }
+}
+
+/* --- Pagination: pill buttons with accent active state --------------------- */
+
+.pagination {
+  .page-item {
+    .page-link {
+      border-radius: 0.6rem;
+      transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+    }
+
+    &.active .page-link {
+      background-color: var(--accent) !important;
+      color: #fff !important;
+    }
+
+    &:not(.active) .page-link:hover {
+      color: var(--accent);
+    }
+  }
+}
+
+/* --- Tags & buttons -------------------------------------------------------- */
+
+.post-tag {
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+
+  &:hover {
+    color: var(--accent) !important;
+    border-color: var(--accent) !important;
+  }
+}
+
+#back-to-top {
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+
+  &:hover {
+    background: var(--accent) !important;
+    color: #fff !important;
+    border-color: var(--accent) !important;
+    transform: translateY(-2px);
+  }
+}
+
+/* --- Blockquotes & inline code: gentle accent ------------------------------ */
+
+blockquote {
+  border-left-color: var(--accent) !important;
+}
+
+/* --- Table of contents active marker -------------------------------------- */
+
+#toc-wrapper {
+  .toc .toc-link.active::before,
+  .toc-link:hover {
+    color: var(--accent);
+  }
+}
