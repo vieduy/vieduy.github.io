@@ -1,12 +1,15 @@
 ---
 title: "How to Run an LLM On-Device with LiteRT-LM: A Complete iOS Integration Tutorial"
-date: 2026-06-28 12:00:00 +0700
+date: 2026-06-27 14:00:00 +0700
 categories: [AI, SLM]
 tags: [on-device, litert, gemma, ios, swift, mobile, tutorial]
 toc: true
 ---
 
 *Step-by-step: from a `.litertlm` model file to a working SwiftUI app generating text on a real iPhone — with every layer, command, and gotcha.*
+
+> 💻 **Full source code:** the complete sample app for this tutorial is open-source at **[github.com/vieduy/litertlm-ios-sample-app](https://github.com/vieduy/litertlm-ios-sample-app)**. Clone it, run `scripts/bootstrap.sh`, and you have everything below working end-to-end.
+{: .prompt-tip }
 
 ---
 
@@ -500,4 +503,4 @@ That's the whole pipeline: `.litertlm` → C runtime → C++ wrapper → Obj-C++
 
 ---
 
-*Reference implementation: the `sample-ios-app` in this repo (gemma-3-270m, LiteRT-LM v0.12.0). `scripts/bootstrap.sh` automates Steps 1–7.*
+*Reference implementation: the open-source sample app at [github.com/vieduy/litertlm-ios-sample-app](https://github.com/vieduy/litertlm-ios-sample-app) (gemma-3-270m, LiteRT-LM v0.12.0). `scripts/bootstrap.sh` automates Steps 1–7.*
