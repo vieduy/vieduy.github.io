@@ -52,24 +52,39 @@ $sidebar-display: 'sidebar-display'; /* the attribute for sidebar display */
     @extend %sidebar-links;
   }
 
-  #avatar {
-    display: block;
-    width: 6.5rem;
-    height: 6.5rem;
+  #monogram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 1.25rem;
     overflow: hidden;
-    box-shadow: var(--avatar-border-color) 0 0 0 2px;
+    color: #fff;
+    background: linear-gradient(135deg, #4c6ef5 0%, #7048e8 100%);
+    box-shadow: 0 6px 20px rgba(76, 110, 245, 0.32);
     transform: translateZ(0); /* fixed the zoom in Safari */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 
     @include bp.sm {
-      width: 7rem;
-      height: 7rem;
+      width: 4.5rem;
+      height: 4.5rem;
     }
 
-    img {
-      transition: transform 0.5s;
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 26px rgba(76, 110, 245, 0.42);
+    }
 
-      &:hover {
-        transform: scale(1.2);
+    span {
+      font-family: inherit;
+      font-weight: 800;
+      font-size: 1.6rem;
+      line-height: 1;
+      letter-spacing: 0.5px;
+
+      @include bp.sm {
+        font-size: 1.8rem;
       }
     }
   }
@@ -99,11 +114,11 @@ $sidebar-display: 'sidebar-display'; /* the attribute for sidebar display */
     @extend %sidebar-link-hover;
 
     font-family: inherit;
-    font-weight: 900;
-    font-size: 1.75rem;
+    font-weight: 800;
+    font-size: 1.6rem;
     line-height: 1.2;
     letter-spacing: 0.25px;
-    margin-top: 1.25rem;
+    margin-top: 1rem;
     margin-bottom: 0.5rem;
     width: -webkit-fit-content;
     width: -moz-fit-content;
