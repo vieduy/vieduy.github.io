@@ -2,9 +2,12 @@
 
 <aside aria-label="Sidebar" id="sidebar" class="d-flex flex-column align-items-end">
   <header class="profile-wrapper">
-    <a href="{{ '/' | relative_url }}" id="monogram" aria-label="{{ site.title }}">
-      <span>vd</span>
-    </a>
+    {% if site.avatar != empty and site.avatar %}
+      {% capture avatar_url %}{% include media-url.html src=site.avatar %}{% endcapture %}
+      <a href="{{ '/' | relative_url }}" id="avatar" class="rounded-3 overflow-hidden" aria-label="{{ site.title }}">
+        <img src="{{ avatar_url }}" width="112" height="112" alt="{{ site.title }}">
+      </a>
+    {% endif %}
 
     <a class="site-title d-block" href="{{ '/' | relative_url }}">{{ site.title }}</a>
     <p class="site-subtitle fst-italic mb-0">{{ site.tagline }}</p>
