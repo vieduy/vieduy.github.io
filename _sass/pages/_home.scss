@@ -2,6 +2,76 @@
 @use '../abstracts/breakpoints' as bp;
 @use '../abstracts/placeholders';
 
+$brand-gradient: linear-gradient(135deg, #4c6ef5 0%, #7048e8 100%);
+
+#home-hero {
+  position: relative;
+  margin-top: 1.5rem;
+  padding: 2.25rem 1.75rem;
+  border-radius: v.$radius-lg * 1.6;
+  overflow: hidden;
+  color: #fff;
+  background: $brand-gradient;
+  box-shadow: 0 14px 40px rgba(76, 110, 245, 0.28);
+
+  @include bp.lg {
+    margin-top: 2.5rem;
+    padding: 3rem 2.75rem;
+  }
+
+  /* soft decorative glow */
+  &::after {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -10%;
+    width: 22rem;
+    height: 22rem;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.22) 0%,
+      rgba(255, 255, 255, 0) 70%
+    );
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-eyebrow {
+    margin: 0 0 0.6rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+
+  .hero-title {
+    margin: 0;
+    font-size: 2.1rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: 0.3px;
+
+    @include bp.lg {
+      font-size: 2.6rem;
+    }
+  }
+
+  .hero-tagline {
+    margin: 0.65rem 0 0;
+    max-width: 34rem;
+    font-size: 1.02rem;
+    font-weight: 400;
+    line-height: 1.5;
+    opacity: 0.92;
+  }
+}
+
 #post-list {
   margin-top: 2rem;
 
@@ -15,13 +85,49 @@
     }
 
     &:not(:last-child) {
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.5rem;
     }
   }
 
   .card {
-    border: 0;
-    background: none;
+    position: relative;
+    border: 1px solid var(--main-border-color);
+    border-radius: v.$radius-lg * 1.4;
+    overflow: hidden;
+    background: var(--card-bg);
+    box-shadow: var(--card-shadow);
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease,
+      border-color 0.25s ease;
+
+    /* accent bar on the leading edge */
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: $brand-gradient;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      z-index: 2;
+    }
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
+      border-color: rgba(76, 110, 245, 0.35);
+
+      &::before {
+        opacity: 1;
+      }
+
+      .card-title {
+        color: #4c6ef5 !important;
+      }
+    }
 
     %img-radius {
       border-radius: v.$radius-lg v.$radius-lg 0 0;
@@ -51,7 +157,29 @@
         @extend %text-clip;
 
         color: var(--heading-color) !important;
-        font-size: 1.25rem;
+        font-size: 1.3rem;
+        font-weight: 700;
+        line-height: 1.3;
+        transition: color 0.25s ease;
+      }
+
+      .post-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+
+        .post-tag {
+          padding: 0.15rem 0.7rem;
+          font-size: 0.74rem;
+          font-weight: 600;
+          letter-spacing: 0.2px;
+          color: var(--text-muted-color);
+          background: var(--main-border-color);
+          border-radius: 50rem;
+          transition:
+            color 0.2s ease,
+            background 0.2s ease;
+        }
       }
 
       %muted {
