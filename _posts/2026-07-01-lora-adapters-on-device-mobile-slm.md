@@ -1,6 +1,6 @@
 ---
 title: "One Small Model, Many Skills: Switching LoRA Adapters On-Device to Get the Most Out of a Mobile SLM"
-date: 2026-07-01 14:00:00 +0700
+date: 2026-07-01 10:00:00 +0700
 categories: [AI, SLM]
 tags: [on-device, llama-cpp, lora, adapters, gemma, ios, swift, mobile, tutorial]
 toc: true
